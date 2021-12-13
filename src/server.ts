@@ -1,3 +1,4 @@
+// import "reflect-metadata"
 import express, {Request, Response} from 'express';
 import { PostController } from './controllers/blogPostController';
 import { createConnection } from "typeorm";
@@ -5,7 +6,7 @@ import { createConnection } from "typeorm";
 class Server {
 
   private app: express.Application;
-  private postController: PostController;
+  private postController!: PostController;
 
   constructor(){
     this.app = express(); // init the application
@@ -33,7 +34,7 @@ class Server {
       port: 5444,
       username: "postgres",
       password: "1234",
-      database: "blogBD",
+      database: "blogdb",
       entities: ["dist/db/entities/**/*.js"],
       synchronize: true,
       name: "blog"

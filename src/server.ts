@@ -1,16 +1,18 @@
 import express, {Request, Response} from 'express';
+import { PostController } from './controllers/blogPostController';
+import { createConnection } from "typeorm";
 
 class Server {
 
-    private app : express.Application;
+  private app: express.Application;
+  private postController: PostController;
 
-    constructor() {
-        this.app = express(); //init the app
-        this.configuration();
-        this.routes();
-    }
+  constructor(){
+    this.app = express(); // init the application
+    this.configuration();
+    this.routes();
+  }
 
-   
   /**
    * Method to configure the server,
    * If we didn't configure the port into the environment 
@@ -31,8 +33,8 @@ class Server {
       port: 5444,
       username: "postgres",
       password: "1234",
-      database: "blogDB",
-      entities: ["dist/database/entities/**/*.js"],
+      database: "blogBD",
+      entities: ["dist/db/entities/**/*.js"],
       synchronize: true,
       name: "blog"
     });
@@ -51,7 +53,7 @@ class Server {
    */
   public start(){
     this.app.listen(this.app.get('port'), () => {
-      console.log(`Server is listening on port: ${this.app.get('port')}`);
+      console.log(`Server is listening ${this.app.get('port')} port.`);
     });
   }
 }

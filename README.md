@@ -1,2 +1,2 @@
 # myBlog_ts
-### A NodeJs blog application using typeorm and postgres
+### A blog Rest API with Express, PostgreSQL, TypeOrm, and TypeScript
